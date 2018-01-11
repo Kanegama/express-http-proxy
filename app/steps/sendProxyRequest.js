@@ -11,6 +11,12 @@ function sendProxyRequest(Container) {
 
   return new Promise(function(resolve, reject) {
     var protocol = Container.proxy.requestModule;
+    try {
+        console.log(JSON.stringify({"adapter.reqOpt": reqOpt}));
+    } catch(e) {
+        console.log(e);
+    }
+
     var proxyReq = protocol.request(reqOpt, function(rsp) {
       var chunks = [];
       rsp.on('data', function(chunk) { chunks.push(chunk); });
