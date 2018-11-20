@@ -5,6 +5,10 @@ function copyProxyResHeadersToUserRes(container) {
     var res = container.user.res;
     var rsp = container.proxy.res;
 
+    if (rsp.statusCode === 504) {
+        resolve(container);
+    }
+
     if (!res.headersSent) {
         res.status(rsp.statusCode);
         Object.keys(rsp.headers)

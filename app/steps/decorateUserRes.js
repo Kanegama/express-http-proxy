@@ -5,7 +5,7 @@ var debug = require('debug')('express-http-proxy');
 var zlib = require('zlib');
 
 function isResGzipped(res) {
-  return res.headers['content-encoding'] === 'gzip';
+  return res.headers && res.headers['content-encoding'] === 'gzip';
 }
 
 function zipOrUnzip(method) {
