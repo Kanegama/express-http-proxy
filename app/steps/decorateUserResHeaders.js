@@ -5,7 +5,7 @@ function decorateUserResHeaders(container) {
   var resolverFn = container.options.userResHeaderDecorator;
   var headers = container.user.res._headers;
 
-  if (!resolverFn || container.proxy.res.statusCode === 504) {
+  if (!resolverFn) {
     return Promise.resolve(container);
   }
 
