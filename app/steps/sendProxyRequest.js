@@ -43,9 +43,10 @@ function sendProxyRequest(Container) {
         res.setHeader('X-Timout-Reason',
           'express-http-proxy timed out your request after ' +
         options.timeout + 'ms.');
-        res.writeHead(504, {'Content-Type': 'text/plain'});
+        //res.writeHead(504, {'Content-Type': 'text/plain'});
+        res.statusCode = 504;
         Container.proxy.res = res;
-        Container.proxy.resData = null;
+        //Container.proxy.resData = {};
         resolve(Container);
         //res.end();
       } else {
